@@ -2,17 +2,19 @@
 
 {% block head %}
     {{ super() }}
-<title>{% block title %} Flask App | {% endblock %}</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-</head>
+
+    <title>
+        {% block title %}Flask Platzi |{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
 {% endblock %}
 
 {% block body %}
-{% block navbar %}
-    {% include 'navbar.html' %}
-{% endblock %}
+    {% block navbar %}
+        {% include 'navbar.html' %}
+    {% endblock %}
 
-{% for message in get_flashed_messages() %}
+    {% for message in get_flashed_messages() %}
         <div class="alert alert-success alert-dismissible">
             <button type="button"
                     data-dismiss="alert"
@@ -21,10 +23,8 @@
         </div>
     {% endfor %}
 
-{% block content %}{% endblock%}
-
-{% block scripts %}
+    {% block content %}{% endblock %}
+    {% block scripts %}
         {{ super() }}
     {% endblock %}
-    
-{% endblock%}
+{% endblock %}
